@@ -1,9 +1,10 @@
 # Truthlens: Real-Time Data & AI-Driven Truth Finding
 ---
-
+-
 Welcome to **Truthlens**, your intelligent platform displaying live news, currency rates, weather updates, and more! This app leverages artificial intelligence to assess the reliability of information, helping you distinguish between real and fake content.
 ---
 ## Introduction
+-
 Truthlens is a comprehensive mobile application designed for Android, iOS, and web users. It combines real-time data streams with an AI-based system that evaluates sources' credibility, providing insights into whether news or other data might be trustworthy.
 ---
 ## Features
