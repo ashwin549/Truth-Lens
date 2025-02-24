@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 class DailyTab extends StatefulWidget {
   @override
   _DailyTabState createState() => _DailyTabState();
@@ -20,15 +20,18 @@ class _DailyTabState extends State<DailyTab> {
   }
 
   Future<void> _fetchData() async {
+    String apiKey_1 = dotenv.env['API_KEY_1'] ?? 'Default value';
+    String city = 'Udupi';
+    String apiKey_2 = dotenv.env['API_KEY_2'] ?? 'Default value';
     try {
       // Weather API call using Weatherstack
       final weatherResponse = await http.get(
-        Uri.parse('http://api.weatherstack.com/current?access_key=API_KEY_HERE&query=Udupi'),
+        Uri.parse('http://api.weatherstack.com/current?access_key=$apiKey_1&query=$city'),
       );
 
       // Currency API call (using ExchangeRate-API - you'll need an API key)
       final currencyResponse = await http.get(
-        Uri.parse('https://v6.exchangerate-api.com/v6/API_KEY_HERE/latest/INR'),
+        Uri.parse('https://v6.exchangerate-api.com/v6/$apiKey_2/latest/INR'),
       );
 
       if (weatherResponse.statusCode == 200 && currencyResponse.statusCode == 200) {

@@ -38,6 +38,8 @@ dependencies:
   http: ^1.1.0
   firebase_auth: ^4.4.0  # check for latest version
   google_sign_in: ^6.1.0 # check for latest version
+  curved_navigation_bar: ^1.0.6 #latest version
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +67,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
+  assets:
+    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
