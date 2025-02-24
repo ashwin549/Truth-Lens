@@ -1,16 +1,26 @@
-# truthlens2
+# Truthlens: Real-Time Data & AI-Driven Truth Finding
 
-A new Flutter project.
+---
 
-## Getting Started
+- Welcome to **Truthlens**, your intelligent platform displaying live news, currency rates, weather updates, and more! This app leverages artificial intelligence to assess the reliability of information, helping you distinguish between real and fake content.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Introduction
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Truthlens is a comprehensive mobile application designed for Android, iOS, and web users. It combines real-time data streams with an AI-based system that evaluates sources' credibility, providing insights into whether news or other data might be trustworthy.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Features
+- AI Truth Finder: Automatically assesses the probability of information being real using machine learning models based on factors like source reliability.
+- News Articles: Real-time updates with AI-generated trust scores, analyzed for sentiment and context to determine credibility.
+- Currency Rates: Instantly displays current rates updated every few seconds globally.
+- Weather Updates: Hourly forecasts from trusted meteorological sources.
+- Stocks: Hourly updates on current stocks
+
+
+
+
+
+

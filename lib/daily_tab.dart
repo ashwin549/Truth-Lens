@@ -23,12 +23,12 @@ class _DailyTabState extends State<DailyTab> {
     try {
       // Weather API call using Weatherstack
       final weatherResponse = await http.get(
-        Uri.parse('http://api.weatherstack.com/current?access_key=c24c27b33945087055831f1df60d7903&query=Udupi'),
+        Uri.parse('http://api.weatherstack.com/current?access_key=API_KEY_HERE&query=Udupi'),
       );
 
       // Currency API call (using ExchangeRate-API - you'll need an API key)
       final currencyResponse = await http.get(
-        Uri.parse('https://v6.exchangerate-api.com/v6/dc7c5b4937fd2c1b43fd15b2/latest/INR'),
+        Uri.parse('https://v6.exchangerate-api.com/v6/API_KEY_HERE/latest/INR'),
       );
 
       if (weatherResponse.statusCode == 200 && currencyResponse.statusCode == 200) {
