@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeTab extends StatelessWidget {
   @override
@@ -21,19 +22,45 @@ class HomeTab extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: 10, // Replace with actual news count
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('News Title $index'),
-            subtitle: Text('News Description $index'),
-            onTap: () {
-              // Navigate to the NewsDetailScreen when a news item is tapped
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsDetailScreen(newsIndex: index),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('news').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Error loading news.'));
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          final newsDocs = snapshot.data!.docs;
+
+          return ListView.builder(
+            itemCount: newsDocs.length,
+            itemBuilder: (context, index) {
+              // Get the document data as a map
+              final newsData = newsDocs[index].data() as Map<String, dynamic>;
+
+              return ListTile(
+                leading: newsData['image'] != null
+                    ? Image.network(
+                  newsData['image'],
+                  width: 100,
+                  fit: BoxFit.cover,
+                )
+                    : null,
+                title: Text(newsData['title'] ?? 'No Title'),
+                subtitle: Text(
+                  "Confidence rating: ${newsData['confidence'] != null ? (newsData['confidence'] as double).toStringAsFixed(2) : 'N/A'}",
                 ),
+                onTap: () {
+                  // Navigate to the detail screen with the news data
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewsDetailScreen(newsData: newsData),
+                    ),
+                  );
+                },
               );
             },
           );
@@ -44,43 +71,57 @@ class HomeTab extends StatelessWidget {
 }
 
 class NewsDetailScreen extends StatelessWidget {
-  final int newsIndex;
+  final Map<String, dynamic> newsData;
 
-  const NewsDetailScreen({Key? key, required this.newsIndex}) : super(key: key);
+  const NewsDetailScreen({Key? key, required this.newsData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Navigate back to the HomeTab
-            Navigator.pop(context);
-          },
-        ),
-        title: Text('News Detail'),
+        title: Text(newsData['Title'] ?? 'News Detail'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'News Title $newsIndex',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'News Description $newsIndex',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Full news content goes here...',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (newsData['image'] != null)
+                Image.network(newsData['image']),
+              SizedBox(height: 10),
+              Text(
+                newsData['title'] ?? 'No Title',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                newsData['article'] ?? 'No article content available.',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Source: ${newsData['source'] ?? 'Unknown'}',
+                style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+              ),
+              SizedBox(height: 10),
+              // Optionally display other fields such as confidence or tags
+              if (newsData['confidence'] != null)
+                Text(
+                  'Confidence: ${(newsData['confidence'] as double).toStringAsFixed(2)}',
+                  style: TextStyle(fontSize: 14),
+                ),
+              if (newsData['tags'] != null)
+                Wrap(
+                  spacing: 6.0,
+                  children: List<Widget>.from(
+                    (newsData['tags'] as List<dynamic>).map(
+                          (tag) => Chip(label: Text(tag.toString())),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

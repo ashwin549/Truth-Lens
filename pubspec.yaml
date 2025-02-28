@@ -40,6 +40,7 @@ dependencies:
   google_sign_in: ^6.1.0 # check for latest version
   curved_navigation_bar: ^1.0.6 #latest version
   flutter_dotenv: ^5.0.2
+  cloud_firestore: ^4.6.0  # or the latest version
 
 dev_dependencies:
   flutter_test:
