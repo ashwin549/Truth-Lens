@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "371352863303-j0p25j1bocu0kf80vp2jpcghtesl4tkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.truthlens2",
+            "certificate_hash": "e5b194061538ff874bb0d459a162cf75c4a36dff"
+          }
+        },
+        {
           "client_id": "371352863303-btnkej2gsqh5fsnogq1p35vvq0e6le84.apps.googleusercontent.com",
           "client_type": 3
         }

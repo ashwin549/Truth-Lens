@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_tab.dart';
 import 'daily_tab.dart';
-import 'post_tab.dart';
+
 import 'profile_tab.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -16,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _tabs = [
     HomeTab(),
     DailyTab(),
-    PostTab(),
     ProfileTab(),
   ];
 
@@ -40,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
         items: <Widget>[
           Icon(Icons.home, size: 30),
           Icon(Icons.trending_up, size: 30),
-          Icon(Icons.add_box, size: 30),
           Icon(Icons.person, size: 30),
         ],
         onTap: (index) {

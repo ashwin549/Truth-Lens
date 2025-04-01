@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeTab extends StatelessWidget {
   @override
@@ -100,10 +101,28 @@ class NewsDetailScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 10),
-              Text(
-                'Source: ${newsData['source'] ?? 'Unknown'}',
-                style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+              GestureDetector(
+                onTap: () async {
+                  final url = newsData['source'];
+                  if (url != null && await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Could not open the source link.")),
+                    );
+                  }
+                },
+                child: Text(
+                  'Source: ${newsData['source'] ?? 'Unknown'}',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.blue,  // Make it look like a link
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
               ),
+
               SizedBox(height: 10),
               // Optionally display other fields such as confidence or tags
               if (newsData['confidence'] != null)
