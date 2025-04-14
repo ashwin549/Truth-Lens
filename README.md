@@ -1,3 +1,8 @@
+# NOTE
+Truthlens uses a server side NewsScraper to scrape news from online news sites and then analyse them for fake texts. This is my github for the newsScraping part:
+
+[NewsScraper](https://github.com/ashwin549/NewsScraper)
+
 # Truthlens: Real-Time Data & AI-Driven Truth Finding
 
 ---
