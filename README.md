@@ -6,6 +6,8 @@ Truthlens uses a server side NewsScraper to scrape news from online news sites a
 link for the CNN model:
 [CNNmodel](https://www.kaggle.com/code/arshaqshagihan/interpretable-cnn)
 
+Ddownload model weights and vectorizer from the cnn model, then run the newscraper usinh it. 
+
 # Truthlens: Real-Time Data & AI-Driven Truth Finding
 
 ---
