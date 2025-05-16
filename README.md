@@ -1,13 +1,3 @@
-# NOTE
-Truthlens uses a server side NewsScraper to scrape news from online news sites and then analyse them for fake texts. This is my github for the newsScraping part:
-
-[NewsScraper](https://github.com/ashwin549/NewsScraper)
-
-link for the CNN model:
-[CNNmodel](https://www.kaggle.com/code/arshaqshagihan/interpretable-cnn)
-
-Download model weights and vectorizer from the cnn model, then run the newscraper using it. 
-
 # Truthlens: Real-Time Data & AI-Driven Truth Finding
 
 ---
@@ -28,6 +18,19 @@ Download model weights and vectorizer from the cnn model, then run the newscrape
 - Currency Rates: Instantly displays current rates updated every few seconds globally.
 - Weather Updates: Hourly forecasts from trusted meteorological sources.
 - Stocks: Hourly updates on current stocks
+
+# Download
+Download the latest release by clicking on the apk in [Releases](https://github.com/ashwin549/Truth-Lens/releases)
+
+# NOTE
+Truthlens uses a server side NewsScraper to scrape news from online news sites and then analyse them for fake texts. This is my github for the newsScraping part:
+
+[NewsScraper](https://github.com/ashwin549/NewsScraper)
+
+link for the CNN model:
+[CNNmodel](https://www.kaggle.com/code/arshaqshagihan/interpretable-cnn)
+
+Download model weights and vectorizer from the cnn model, then run the newscraper using it. 
 
 
 
