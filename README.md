@@ -1,3 +1,13 @@
+# NOTE
+Truthlens uses a server side NewsScraper to scrape news from online news sites and then analyse them for fake texts. This is my github for the newsScraping part:
+
+[NewsScraper](https://github.com/ashwin549/NewsScraper)
+
+link for the CNN model:
+[CNNmodel](https://www.kaggle.com/code/arshaqshagihan/interpretable-cnn)
+
+Download model weights and vectorizer from the cnn model, then run the newscraper using it. 
+
 # Truthlens: Real-Time Data & AI-Driven Truth Finding
 
 ---
